@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light/Dark Theme Change</title>
+    <style>
+        .theme-container {
+            margin: 20px;
+            border: 4px solid black;
+            width: fit-content;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .container-theme-dark {
+            border: 4px solid white;
+        }
+
+        .container-theme-light {
+            border: 4px solid black;
+        }
+
+        .theme-icon {
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .img-light {
+            background-color: teal;
+        }
+
+        .active {
+            transition: .5s;
+            background-color: teal;
+        }
+
+        .theme-dark {
+            background: #191919;
+            color: black;
+        }
+
+        .theme-light {
+            background-color: rgb(255, 255, 255);
+            color: white;
+        }
+
+        .content-container {
+            margin: 0 auto;
+            width: fit-content;
+
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div class="theme-container" id="container">
+        <img class="theme-icon" src="themes.png" alt="" id="img-dark" onclick="darkMode()">
+        <img class="theme-icon img-light" src="display.png" alt="" id="img-light" onclick="lightMode()">
+    </div>
+    <div class="content-container">
+        <h1 id="pre-text" style="color: red;">Default light theme  is turned ON.</h1>
+    </div>
+    <script>
+        function darkMode() {
+            const imgDark = document.getElementById('img-dark')
+            imgDark.classList.add('active');
+
+
+            const imgLight = document.getElementById('img-light')
+            imgLight.classList.remove('active');
+            imgLight.classList.remove('img-light');
+            const darkcontainer = document.getElementById('container');
+            darkcontainer.classList.add('container-theme-dark');
+
+            const lightcontainer = document.getElementById('container');
+            lightcontainer.classList.remove('container-theme-light');
+
+            const bodyElement = document.getElementById('body');
+            bodyElement.className = 'theme-dark';
+
+            let preTextElement = document.getElementById("pre-text");
+            if (preTextElement.innerText != bodyElement) {
+                preTextElement.innerHTML = "Now Dark Theme is turned ON.";
+            } else {
+                preTextElement.innerHTML = "Light Theme is turned ON.";
+            }
+        }
+        function lightMode() {
+            const imgDark = document.getElementById('img-dark')
+            imgDark.classList.remove('active');
+
+            const imgLight = document.getElementById('img-light')
+            imgLight.classList.add('active');
+
+            const darkcontainer = document.getElementById('container');
+            darkcontainer.classList.remove('container-theme-dark');;
+
+            const containerElement = document.getElementById('container');
+            containerElement.classList.add('container-theme-light');
+
+            const bodyElement = document.getElementById('body');
+            bodyElement.className = 'theme-light';
+
+            let preTextElement = document.getElementById("pre-text");
+            if (preTextElement.innerText != "bodyElement") {
+                preTextElement.innerHTML = "Now Light Theme is turned ON.";
+            } else {
+                preTextElement.innerHTML = "Dark Theme is turned ON.";
+            }
+        }
+    </script>
+</body>
+
+</html>
